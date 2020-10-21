@@ -14,6 +14,11 @@ namespace Joloochu.Data
             {
                 context.Regions.Add(new Region() { id = 1, NameRus = "Чуй" });
                 context.Regions.Add(new Region() { id = 2, NameRus = "Ош" });
+                context.Regions.Add(new Region() { id = 3, NameRus = "Нарын" });
+                context.Regions.Add(new Region() { id = 4, NameRus = "Ысык-Кол" });
+                context.Regions.Add(new Region() { id = 5, NameRus = "Талас" });
+                context.Regions.Add(new Region() { id = 6, NameRus = "Баткен" });
+                context.Regions.Add(new Region() { id = 7, NameRus = "Жалал-Абад" });
                 context.SaveChanges();
             }
 

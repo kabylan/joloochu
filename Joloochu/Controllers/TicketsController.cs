@@ -53,6 +53,10 @@ namespace Joloochu.Controllers
                 return BadRequest();
             }
 
+            // update point
+            _context.Points.Update(ticket.From);
+            _context.Points.Update(ticket.To);
+
             _context.Entry(ticket).State = EntityState.Modified;
 
             try
