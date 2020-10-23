@@ -22,6 +22,7 @@ namespace Joloochu.Data
         public DbSet<Joloochu.District> Districts { get; set; }
         public DbSet<Joloochu.City> Cities { get; set; }
         public DbSet<Joloochu.Village> Villages { get; set; }
-        public DbSet<Joloochu.Point> Points { get; set; }
+        public DbSet<Joloochu.PointTo> PointTos { get; set; }
+        public DbSet<Joloochu.PointFrom> PointFroms { get; set; }
     }
 }

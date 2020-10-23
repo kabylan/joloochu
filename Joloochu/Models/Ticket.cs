@@ -14,11 +14,11 @@ namespace Joloochu
         public string model { get; set; }
         public string price { get; set; }
 
-        public int FromId { get; set; }
-        public Point From { get; set; }
+        public int? PointFromId { get; set; }
+        public PointFrom PointFrom { get; set; }
 
-        public int ToId { get; set; }
-        public Point To { get; set; }
+        public int? PointToId { get; set; }
+        public PointTo PointTo { get; set; }
 
         public string name { get; set; }
         public string phoneNumber { get; set; }
@@ -29,7 +29,27 @@ namespace Joloochu
         public string suppliments { get; set; }
     }
 
-    public class Point
+    public class PointFrom
+    {
+
+        public int Id { get; set; }
+
+        public int? RegionId { get; set; }
+        public Region Region { get; set; }
+
+        public int? DistrictId { get; set; }
+        public District District { get; set; }
+
+        public int? CityId { get; set; }
+        public City City { get; set; }
+
+        public int? VillageId { get; set; }
+        public Village Village { get; set; }
+
+    }
+
+
+    public class PointTo
     {
 
         public int Id { get; set; }

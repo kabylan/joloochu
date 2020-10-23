@@ -14,6 +14,5 @@ namespace Joloochu
 
         public int regionId { get; set; }
 
-        public List<Village> Villages { get; set; }
     }
 }

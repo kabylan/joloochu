@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Joloochu;
 using Joloochu.Data;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Joloochu.Controllers
 {
@@ -19,6 +20,58 @@ namespace Joloochu.Controllers
         {
             _context = context;
         }
+
+
+
+        [HttpGet]
+        [Route("[action]/{fromid}/{toid}")]
+        public IEnumerable<Ticket> GetTickets(int? fromid, int? toid)
+        {
+            IEnumerable<Ticket> tickets = _context.Ticket
+                .Where(p => p.PointToId == toid & p.PointFromId == fromid)
+                .ToList();
+
+            return tickets;
+        }
+
+        //[HttpGet]
+        //[Route("[action]")]
+        //public IEnumerable<Ticket> FindTicketsByPointFrom(PointFrom from)
+        //{
+
+        //    IEnumerable<Ticket> tickets = _context.Ticket
+        //        .Include(p => p.PointFrom)
+        //        .ToList();
+
+        //    tickets = tickets.Where(
+        //        p => p.PointFrom.CityId == from.CityId &
+        //        p.PointFrom.DistrictId == from.DistrictId &
+        //        p.PointFrom.RegionId == from.RegionId &
+        //        p.PointFrom.VillageId == from.VillageId
+        //    );
+
+        //    return tickets.ToList();
+        //}
+
+        //[HttpGet]
+        //[Route("[action]")]
+        //public IEnumerable<Ticket> FindTicketsByPointTo(PointTo to)
+        //{
+
+        //    IEnumerable<Ticket> tickets = _context.Ticket
+        //        .Include(p => p.PointTo)
+        //        .ToList();
+
+        //    tickets = tickets.Where(
+        //        p => p.PointTo.CityId == to.CityId &
+        //        p.PointTo.DistrictId == to.DistrictId &
+        //        p.PointTo.RegionId == to.RegionId &
+        //        p.PointTo.VillageId == to.VillageId
+        //    );
+
+        //    return tickets.ToList();
+        //}
+
 
 
         // GET: api/Tickets
@@ -53,9 +106,9 @@ namespace Joloochu.Controllers
                 return BadRequest();
             }
 
-            // update point
-            _context.Points.Update(ticket.From);
-            _context.Points.Update(ticket.To);
+            //// update point
+            //_context.Points.Update(ticket.From);
+            //_context.Points.Update(ticket.To);
 
             _context.Entry(ticket).State = EntityState.Modified;
 
@@ -86,16 +139,16 @@ namespace Joloochu.Controllers
         {
             // get point and add
 
-            Point from = ticket.From;
-            Point to = ticket.To;
+            //Point from = ticket.From;
+            //Point to = ticket.To;
 
-            _context.Points.Add(ticket.From);
-            _context.Points.Add(ticket.To);
+            //_context.Points.Add(ticket.From);
+            //_context.Points.Add(ticket.To);
 
-            ticket.FromId = from.Id;
-            ticket.ToId = to.Id;
+            //ticket.FromId = from.Id;
+            //ticket.ToId = to.Id;
 
-            // id of point
+            //// id of point
 
             _context.Ticket.Add(ticket);
             await _context.SaveChangesAsync();
