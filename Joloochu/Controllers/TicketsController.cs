@@ -11,7 +11,6 @@ using Joloochu.Data;
 namespace Joloochu.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class TicketsController : ControllerBase
     {
         private readonly JoloochuContext _context;
@@ -20,6 +19,7 @@ namespace Joloochu.Controllers
         {
             _context = context;
         }
+
 
         // GET: api/Tickets
         [HttpGet]

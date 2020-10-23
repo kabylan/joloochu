@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Joloochu
 {
@@ -12,5 +13,7 @@ namespace Joloochu
         public string NameEng { get; set; }
 
         public int regionId { get; set; }
+
+        public List<Village> Villages { get; set; }
     }
 }
