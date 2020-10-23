@@ -12,48 +12,48 @@ namespace Joloochu.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PointFromsController : ControllerBase
+    public class PointsController : ControllerBase
     {
         private readonly JoloochuContext _context;
 
-        public PointFromsController(JoloochuContext context)
+        public PointsController(JoloochuContext context)
         {
             _context = context;
         }
 
-        // GET: api/PointFroms
+        // GET: api/Points
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PointFrom>>> GetPointFroms()
+        public async Task<ActionResult<IEnumerable<Point>>> GetPoint()
         {
-            return await _context.PointFroms.ToListAsync();
+            return await _context.Point.ToListAsync();
         }
 
-        // GET: api/PointFroms/5
+        // GET: api/Points/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PointFrom>> GetPointFrom(int id)
+        public async Task<ActionResult<Point>> GetPoint(int id)
         {
-            var pointFrom = await _context.PointFroms.FindAsync(id);
+            var point = await _context.Point.FindAsync(id);
 
-            if (pointFrom == null)
+            if (point == null)
             {
                 return NotFound();
             }
 
-            return pointFrom;
+            return point;
         }
 
-        // PUT: api/PointFroms/5
+        // PUT: api/Points/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPointFrom(int id, PointFrom pointFrom)
+        public async Task<IActionResult> PutPoint(int id, Point point)
         {
-            if (id != pointFrom.Id)
+            if (id != point.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(pointFrom).State = EntityState.Modified;
+            _context.Entry(point).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace Joloochu.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PointFromExists(id))
+                if (!PointExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace Joloochu.Controllers
             return NoContent();
         }
 
-        // POST: api/PointFroms
+        // POST: api/Points
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<PointFrom>> PostPointFrom(PointFrom pointFrom)
+        public async Task<ActionResult<Point>> PostPoint(Point point)
         {
-            _context.PointFroms.Add(pointFrom);
+            _context.Point.Add(point);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPointFrom", new { id = pointFrom.Id }, pointFrom);
+            return CreatedAtAction("GetPoint", new { id = point.Id }, point);
         }
 
-        // DELETE: api/PointFroms/5
+        // DELETE: api/Points/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<PointFrom>> DeletePointFrom(int id)
+        public async Task<ActionResult<Point>> DeletePoint(int id)
         {
-            var pointFrom = await _context.PointFroms.FindAsync(id);
-            if (pointFrom == null)
+            var point = await _context.Point.FindAsync(id);
+            if (point == null)
             {
                 return NotFound();
             }
 
-            _context.PointFroms.Remove(pointFrom);
+            _context.Point.Remove(point);
             await _context.SaveChangesAsync();
 
-            return pointFrom;
+            return point;
         }
 
-        private bool PointFromExists(int id)
+        private bool PointExists(int id)
         {
-            return _context.PointFroms.Any(e => e.Id == id);
+            return _context.Point.Any(e => e.Id == id);
         }
     }
 }
